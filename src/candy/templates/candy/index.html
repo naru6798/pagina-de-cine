@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine</title>
+</head>
+<body>
+    <nav>
+        <ol>
+            <li><a href="{% url 'candy:index' %}">CINEMA</a></li>
+            <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
+            <li><a href="{% url 'candy:empleados' %}">Empleados</a></li>
+        </ol>
+    </nav>   
+    
+    {% for p in pelicula %}
+        <h2>{{p.titulo}}</h2>
+        <h5>{{p.fecha_lanzamiento}}</h5>
+        <h3>{{p.descripcion}}</h3>
+    {% endfor %}
+    
+</body>
+</html>
