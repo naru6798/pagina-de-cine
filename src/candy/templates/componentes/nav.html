@@ -1,0 +1,10 @@
+{% load static %}
+
+<nav>
+    <ol>
+        <li><a href="{% url 'candy:index' %}">CINEMA</a></li>
+        <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
+        <li><a href="{% url 'candy:empleados' %}">Empleados</a></li>
+    </ol>
+    <img src="{% static 'candy/cine-portada.webp' %}" alt="portada-cine" height="50%" width="100%">
+</nav>    
