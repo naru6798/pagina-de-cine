@@ -1,14 +1,29 @@
 from django.shortcuts import render, redirect
 from .models import Candy, Peliculas #Punto para modelos dentro de la misma aplicacion
-from . import models, forms
+from . import forms
+from django.contrib.auth.views import LoginView
+from .forms import LoginForm
+from django.urls import reverse_lazy
+
+
 
 def index(request):
-    pelicula = Peliculas.objects.all().order_by('fecha_lanzamiento')
-    return render(request, 'candy/index.html', {'pelicula': pelicula})
+    busqueda = request.GET.get("busqueda")
+    if busqueda:
+        pelicula = Peliculas.objects.filter(titulo__icontains = busqueda)
+    else:
+        pelicula = Peliculas.objects.all().order_by('fecha_lanzamiento')
+    context = {'pelicula': pelicula}
+    return render(request, 'candy/index.html', context)
 
 def candy_list(request):
-    candy = Candy.objects.all().order_by('nombre')
-    return render(request, 'candy/candy_list.html', {'candy': candy})
+    busqueda = request.GET.get("busqueda")
+    if busqueda:
+        candy = Candy.objects.filter(nombre__icontains = busqueda)
+    else:
+        candy = Candy.objects.all().order_by('nombre')
+    context = {'candy': candy}
+    return render(request, 'candy/candy_list.html', context)
 
 def empleados(request):
     candy = Candy.objects.all().order_by('nombre')
@@ -39,4 +54,8 @@ def candy_delete(request, pk:int):
         return redirect('candy:empleados')
     return render(request, 'candy/candy_delete.html', {'query': query})
 
+class MiLoginView(LoginView):
+    template_name = 'candy/login.html'
+    authentication_form = LoginForm
+    next_page = reverse_lazy('candy:index')
 

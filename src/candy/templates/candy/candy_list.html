@@ -10,6 +10,7 @@
 <body>
 
 {% block content %}
+    {% endif %}
     {% for c in candy %}
     <h2>{{ c.nombre }}</h2>
     <p>Precio: {{ c.precio }} $</p>

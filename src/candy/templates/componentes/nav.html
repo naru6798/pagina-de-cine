@@ -3,8 +3,21 @@
 <nav>
     <ol>
         <li><a href="{% url 'candy:index' %}">CINEMA</a></li>
-        <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
-        <li><a href="{% url 'candy:empleados' %}">Empleados</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
+            <li><a href="{% url 'candy:empleados' %}">Stocks</a></li>
+            <form action="{% url 'candy:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesion</button>
+            </form>
+        {% else %}
+            <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
+            <li><a href="{% url 'candy:login' %}">Sector Empleados</a></li>
+        {% endif %}
+
     </ol>
-    <img src="{% static 'candy/cine-portada.webp' %}" alt="portada-cine" height="50%" width="100%">
+    <form method="get">
+        <input type="text" name="busqueda" placeholder="Buscar...">
+    </form>
 </nav>    
+<img src="{% static 'candy/cine-portada.webp' %}" alt="portada-cine" height="50%" width="100%">

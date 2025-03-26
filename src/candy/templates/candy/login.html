@@ -1,0 +1,13 @@
+{% extends 'candy/base.html' %}
+
+{% block content %}
+    <h1>Empleados</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <p>
+        ¿No tienes una cuenta? 
+    </p>
+{% endblock content %}
