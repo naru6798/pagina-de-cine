@@ -32,4 +32,11 @@ def candy_update(request, pk:int):
             return redirect('candy:empleados')
     return render(request, 'candy/candy_update.html', {'form': form})
 
+def candy_delete(request, pk:int):
+    query = Candy.objects.get(id=pk)
+    if request.method == "POST": 
+        query.delete()
+        return redirect('candy:empleados')
+    return render(request, 'candy/candy_delete.html', {'query': query})
+
 

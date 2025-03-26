@@ -27,6 +27,7 @@
                 <td>{{c.nombre}}</td>
                 <td>{{c.precio}}$</td>
                 <td><a href="{% url 'candy:candy_update' c.id %}"><button>Editar</button></a></td>
+                <td><a href="{% url 'candy:candy_delete' c.id %}"><button>Eliminar</button></a></td>
         {% endfor %}
     </table>
 
