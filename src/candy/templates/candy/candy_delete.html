@@ -2,7 +2,7 @@
 <h1>Candy - Eliminar Candy</h1>
 <p>¿Está seguro que desea eliminar el Candy: {{c.nombre}}?</p>
 <form method="post">
-{% csrf_token %}
-<button type="submit">Si, confirmo</button>
+    {% csrf_token %}
+    <button type="submit">Si, confirmo</button>
 </form>
 

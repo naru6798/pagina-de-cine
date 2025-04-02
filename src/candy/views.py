@@ -4,6 +4,8 @@ from . import forms
 from django.contrib.auth.views import LoginView
 from .forms import LoginForm
 from django.urls import reverse_lazy
+from django.contrib import messages
+
 
 
 
@@ -58,4 +60,8 @@ class MiLoginView(LoginView):
     template_name = 'candy/login.html'
     authentication_form = LoginForm
     next_page = reverse_lazy('candy:index')
-
+    
+    def form_valid(self, form):
+        usuario = form.get_user()
+        messages.success(self.request, f'Inicio de sesión exitoso. ¡Bienvenido {usuario.username}!')
+        return super().form_valid(form)
