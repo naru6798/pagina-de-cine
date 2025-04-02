@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Candy, Peliculas #Punto para modelos dentro de la misma aplicacion
 from . import forms
 from django.contrib.auth.views import LoginView
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 
@@ -65,3 +66,13 @@ class MiLoginView(LoginView):
         usuario = form.get_user()
         messages.success(self.request, f'Inicio de sesión exitoso. ¡Bienvenido {usuario.username}!')
         return super().form_valid(form)
+
+class MiRegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = 'candy/register.html'
+    success_url = reverse_lazy('candy:index')
+
+    def form_valid(self, form):
+        messages.success(self.request, f'Registro exitoso')
+        return super().form_valid(form)
+
