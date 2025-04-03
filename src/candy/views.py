@@ -125,3 +125,48 @@ def categoria_delete(request, pk:int):
         query.delete()
         return redirect('candy:categorias')
     return render(request, 'candy/categoria_delete.html', {'query': query})
+
+
+
+
+
+
+# PELICULAS. EDITAR Y ELIMINAR
+
+def peliculas(request):
+    busqueda = request.GET.get("busqueda")
+    if busqueda:
+        pelicula = Peliculas.objects.filter(nombre__icontains = busqueda)
+    else:
+        pelicula = Peliculas.objects.all().order_by('fecha_lanzamiento')
+    context = {'pelicula': pelicula}
+    return render(request, 'candy/peliculas.html', context)
+
+def empleados_peliculas(request):
+    peliculas = Peliculas.objects.all().order_by('fecha_lanzamiento')
+    if request.method == "GET":
+        form = forms.PeliculaForm()
+    if request.method == "POST": 
+        form = forms.PeliculaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('candy:peliculas')
+    return render(request, 'candy/peliculas.html', {'form': form, 'peliculas': peliculas})
+
+def pelicula_update(request, pk:int):
+    query = Peliculas.objects.get(id=pk)
+    if request.method == "GET":
+        form = forms.PeliculaForm(instance=query)
+    if request.method == "POST": 
+        form = forms.PeliculaForm(request.POST, instance=query)
+        if form.is_valid():
+            form.save()
+            return redirect('candy:peliculas')
+    return render(request, 'candy/pelicula_update.html', {'form': form})
+
+def pelicula_delete(request, pk:int):
+    query = Peliculas.objects.get(id=pk)
+    if request.method == "POST": 
+        query.delete()
+        return redirect('candy:peliculas')
+    return render(request, 'candy/pelicula_delete.html', {'query': query})

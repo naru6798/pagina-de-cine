@@ -13,6 +13,12 @@ class CategoriaForm(forms.ModelForm):
         model = models.CategoriaCandy
         fields = "__all__"
 
+class PeliculaForm(forms.ModelForm):
+    class Meta:
+        model = models.Peliculas
+        fields = "__all__"
+
+
 class LoginForm(AuthenticationForm):
     class Meta:
         model = AuthenticationForm

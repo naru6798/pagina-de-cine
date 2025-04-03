@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio - Sector de empleados</title>
+    </head>
+    <body>
+        <ol>
+            <li><h1>Cinema - Sector de empleados</h1></li>
+            <li><a href="{% url 'candy:empleados' %}">Volver</a></li>
+        </ol>
+        <form method="post">
+            {% csrf_token %}
+            <h2>Peliculas</h2>
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </form>
+        <br>
+        <table border="1">
+            <tr>
+                <th>Peliculas</th>
+            </tr>
+            {% for p in peliculas %}
+                <tr>
+                    <td>{{p.titulo}}</td>
+                    <td>{{p.descripcion}}</td>
+                    <td>{{p.fecha_estreno}}</td>
+
+                    <td><a href="{% url 'candy:pelicula_update' p.id %}"><button>Editar</button></a></td>
+                    <td><a href="{% url 'candy:pelicula_delete' p.id %}"><button>Eliminar</button></a></td>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

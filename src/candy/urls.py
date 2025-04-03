@@ -21,3 +21,9 @@ urlpatterns += [
     path('categorias/update/<int:pk>/', views.categoria_update, name='categoria_update'),
     path('categorias/delete/<int:pk>/', views.categoria_delete, name='categoria_delete'),
 ]
+
+urlpatterns += [
+    path('peliculas/', views.empleados_peliculas, name='peliculas'),
+    path('peliculas/update/<int:pk>/', views.pelicula_update, name='pelicula_update'),
+    path('peliculas/delete/<int:pk>/', views.pelicula_delete, name='pelicula_delete'),
+]

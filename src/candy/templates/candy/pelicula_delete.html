@@ -1,0 +1,8 @@
+<a href="{% url 'candy:peliculas' %}">Volver</a>
+<h1>Candy - Eliminar Pelicula</h1>
+<p>¿Está seguro que desea eliminar la categoria: {{query.titulo}}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Si, confirmo</button>
+</form>
+
