@@ -5,7 +5,7 @@
         <li><a href="{% url 'candy:index' %}">CINEMA</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'candy:candy_list' %}">Candy</a></li>
-            <li><a href="{% url 'candy:empleados' %}">Control de Candy</a></li>
+            <li><a href="{% url 'candy:empleados' %}">Control de Candy y Peliculas</a></li>
             <form action="{% url 'candy:logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Cerrar sesion</button>

@@ -20,12 +20,16 @@
         <table border="1">
             <tr>
                 <th>Peliculas</th>
+                <th>Descripcion</th>
+                <th>Fecha de estreno</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
             {% for p in peliculas %}
                 <tr>
                     <td>{{p.titulo}}</td>
                     <td>{{p.descripcion}}</td>
-                    <td>{{p.fecha_estreno}}</td>
+                    <td>{{p.fecha_lanzamiento}}</td>
 
                     <td><a href="{% url 'candy:pelicula_update' p.id %}"><button>Editar</button></a></td>
                     <td><a href="{% url 'candy:pelicula_delete' p.id %}"><button>Eliminar</button></a></td>
