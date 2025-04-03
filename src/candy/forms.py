@@ -8,6 +8,11 @@ class CandyForm(forms.ModelForm):
         model = models.Candy
         fields = "__all__"
 
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = models.CategoriaCandy
+        fields = "__all__"
+
 class LoginForm(AuthenticationForm):
     class Meta:
         model = AuthenticationForm

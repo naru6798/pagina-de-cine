@@ -1,0 +1,8 @@
+<a href="{% url 'candy:categorias' %}">Volver</a>
+<h1>Candy - Eliminar Categoria</h1>
+<p>¿Está seguro que desea eliminar la categoria: {{query.nombre}}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Si, confirmo</button>
+</form>
+

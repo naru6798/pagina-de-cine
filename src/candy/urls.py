@@ -13,4 +13,11 @@ urlpatterns = [
     path('login/', views.MiLoginView.as_view(), name = 'login'),
     path('logout/', LogoutView.as_view(template_name='candy/logout.html'), name='logout'),
     path('register/', views.MiRegisterView.as_view(), name='register'),
+
+]
+
+urlpatterns += [
+    path('categorias/', views.empleados_categorias, name='categorias'),
+    path('categorias/update/<int:pk>/', views.categoria_update, name='categoria_update'),
+    path('categorias/delete/<int:pk>/', views.categoria_delete, name='categoria_delete'),
 ]

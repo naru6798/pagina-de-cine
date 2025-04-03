@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Candy, Peliculas #Punto para modelos dentro de la misma aplicacion
+from .models import Candy, Peliculas, CategoriaCandy #Punto para modelos dentro de la misma aplicacion
 from . import forms
 from django.contrib.auth.views import LoginView
 from .forms import LoginForm, RegisterForm
@@ -57,6 +57,10 @@ def candy_delete(request, pk:int):
         return redirect('candy:empleados')
     return render(request, 'candy/candy_delete.html', {'query': query})
 
+
+
+
+
 class MiLoginView(LoginView):
     template_name = 'candy/login.html'
     authentication_form = LoginForm
@@ -70,9 +74,54 @@ class MiLoginView(LoginView):
 class MiRegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'candy/register.html'
-    success_url = reverse_lazy('candy:index')
+    success_url = reverse_lazy('candy:login')
 
     def form_valid(self, form):
-        messages.success(self.request, f'Registro exitoso')
+        messages.success(self.request, f'Registro exitoso. Inicie sesión aquí abajo.')
         return super().form_valid(form)
 
+
+
+
+
+
+
+# CATEGORIAS. EDITAR Y ELIMINAR
+
+def categorias(request):
+    busqueda = request.GET.get("busqueda")
+    if busqueda:
+        categoria = CategoriaCandy.objects.filter(nombre__icontains = busqueda)
+    else:
+        categoria = CategoriaCandy.objects.all().order_by('nombre')
+    context = {'categoria': categoria}
+    return render(request, 'candy/categorias.html', context)
+
+def empleados_categorias(request):
+    categoria = CategoriaCandy.objects.all().order_by('nombre')
+    if request.method == "GET":
+        form = forms.CategoriaForm()
+    if request.method == "POST": 
+        form = forms.CategoriaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('candy:categorias')
+    return render(request, 'candy/categorias.html', {'form': form, 'categoria': categoria})
+
+def categoria_update(request, pk:int):
+    query = CategoriaCandy.objects.get(id=pk)
+    if request.method == "GET":
+        form = forms.CategoriaForm(instance=query)
+    if request.method == "POST": 
+        form = forms.CategoriaForm(request.POST, instance=query)
+        if form.is_valid():
+            form.save()
+            return redirect('candy:categorias')
+    return render(request, 'candy/categoria_update.html', {'form': form})
+
+def categoria_delete(request, pk:int):
+    query = CategoriaCandy.objects.get(id=pk)
+    if request.method == "POST": 
+        query.delete()
+        return redirect('candy:categorias')
+    return render(request, 'candy/categoria_delete.html', {'query': query})

@@ -9,27 +9,26 @@
         <ol>
             <li><h1>Cinema - Sector de empleados</h1></li>
             <li><a href="{% url 'candy:categorias' %}">Categorias</a></li>
-            <li><a href="{% url 'candy:index' %}">Volver</a></li>
+            <li><a href="{% url 'candy:empleados' %}">Volver</a></li>
         </ol>
         <form method="post">
             {% csrf_token %}
-            <h2>Candy</h2>
+            <h2>Categorias</h2>
             {{ form.as_p }}
             <button type="submit">Enviar</button>
         </form>
         <br>
         <table>
             <tr>
-                <th>Candy</th>
-                <th>Precio</th>
+                <th>Categorias</th>
             </tr>
-            {% for c in candy %}
+            {% for c in categoria %}
                 <tr>
                     <td>{{c.nombre}}</td>
-                    <td>{{c.precio}}$</td>
-                    <td><a href="{% url 'candy:candy_update' c.id %}"><button>Editar</button></a></td>
-                    <td><a href="{% url 'candy:candy_delete' c.id %}"><button>Eliminar</button></a></td>
+                    <td><a href="{% url 'candy:categoria_update' c.id %}"><button>Editar</button></a></td>
+                    <td><a href="{% url 'candy:categoria_delete' c.id %}"><button>Eliminar</button></a></td>
             {% endfor %}
         </table>
 
-        <br>
+    </body>
+</html>
