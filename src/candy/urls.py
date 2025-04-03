@@ -7,6 +7,7 @@ app_name = 'candy'
 urlpatterns = [
     path('', views.index, name='index'),
     path('candy/', views.candy_list, name='candy_list'),
+    path('about/', views.about, name='about'),
     path('empleados/', views.empleados, name='empleados'),
     path('candy/update/<int:pk>/', views.candy_update, name='candy_update'),
     path('candy/delete/<int:pk>/', views.candy_delete, name='candy_delete'),

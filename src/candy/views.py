@@ -19,6 +19,9 @@ def index(request):
     context = {'pelicula': pelicula}
     return render(request, 'candy/index.html', context)
 
+def about(request):
+    return render(request, 'candy/about.html')
+
 def candy_list(request):
     busqueda = request.GET.get("busqueda")
     if busqueda:
