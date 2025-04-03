@@ -6,9 +6,20 @@
     <title>About</title>
 </head>
 <body>
+    {% load static %}
+
+    <a href="{% url 'candy:index' %}">Volver</a>
     <h1>Acerca de mi</h1>
     <h3>Mirabel, Naren Nahuel</h3>
-    <a href="https://www.linkedin.com/in/naren-mirabel/">Linkedin</a>
+    <h3>Estudiante de Ingeniería Industrial en UNLaM</h3>
+    <a href="https://www.linkedin.com/in/naren-mirabel/">
+        <button>
+            <img src="{% static 'candy/linkedin.svg' %}" alt="linkedin" height="50px" width="100px">
+        </button>
+    </a> 
+
+
+
 
 
 </body>
