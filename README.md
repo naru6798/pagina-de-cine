@@ -20,10 +20,10 @@ El proyecto es una página web de un cine. Donde hay un apartado para empleados 
 
 ## Caracteristicas
 1. Modelos: Crean tablas que nos sirven de base de datos
-Peliculas: Aquí se almacenan las peliculas de la cartelera con su titulo, descripcion y fecha de lanzamiento
-CategoriaCandy: Aquí se almacenan las categorias centrales del Candy
-Candy: Aquí se almacenan cada producto dandole como identidad la categoría (dentro de las existentes en nuestro modelo CategoriaCandy), el nombre del producto y el precio
-2. ...
+a. Peliculas: Aquí se almacenan las peliculas de la cartelera con su titulo, descripcion y fecha de lanzamiento
+b. CategoriaCandy: Aquí se almacenan las categorias centrales del Candy
+c. Candy: Aquí se almacenan cada producto dandole como identidad la categoría (dentro de las existentes en nuestro modelo CategoriaCandy), el nombre del producto y el precio
+
 
 ## Mejoras a futuro
 1. Agregar opcion para recuperar contraseña
