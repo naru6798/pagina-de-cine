@@ -14,4 +14,3 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = None
