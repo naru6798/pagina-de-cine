@@ -61,11 +61,15 @@
 </div>
 </div>
 
+<div class="text-center">
+    <a href="{% url 'candy:candy_list' %}" class="btn btn-primary btn-lg">Ir a Candy</a>
+</div>
+
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
 
-            <h2 class="text-center mb-4" style="font-size: 2.5em; background-color: #343a40; color: white; padding: 10px;">Cartelera</h2>
+            <h2 class="text-center mb-4 mt-5" style="font-size: 2.5em; background-color: #343a40; color: white; padding: 10px;">Cartelera</h2>
 
             <div class="row">
                 {% for p in pelicula %}
