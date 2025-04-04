@@ -8,16 +8,12 @@ Alumno: Mirabel, Naren Nahuel
 
 El proyecto es una página web de un cine. Donde hay un apartado para empleados donde pueden manipular la base de datos del candy y de las peliculas.
 
-## Requisitos previos
-
-- Python 3.10 o superior
-- pip
-- Virtualenv (opcional pero recomendado)
 
 ## Cómo ejecutarlo
 - Crear el entorno virtual escribiendo en la terminal "python -m venv .venv"
 - Para activar el entorno virtual escribo .\.venv\Scripts\activate
 - Instalo Django escribiendo en la terminal "pip install Django"
+- Instalo "pip install django-widget-tweaks"
 - Corro las migraciones con "python manage.py migrate"
 - Creo un superusuario con "python manage.py createsuperuser" (opcional)
 - Levanto el servidor local con "python manage.py runserver"
