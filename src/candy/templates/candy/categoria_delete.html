@@ -1,8 +1,21 @@
-<a href="{% url 'candy:categorias' %}">Volver</a>
-<h1>Candy - Eliminar Categoria</h1>
-<p>¿Está seguro que desea eliminar la categoria: {{query.nombre}}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Si, confirmo</button>
-</form>
+{% extends 'candy/base.html' %}
 
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Eliminar Categoría</h1>
+                    <p class="text-center">¿Está seguro que desea eliminar la categoría: {{ query.nombre }}?</p>
+                    <form method="post" class="text-center">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mr-2">Si, confirmo</button>
+                        <a href="{% url 'candy:categorias' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

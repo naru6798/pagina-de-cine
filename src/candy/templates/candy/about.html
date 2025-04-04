@@ -1,3 +1,5 @@
+{% extends 'candy/base.html' %}
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,21 +8,17 @@
         <title>About</title>
     </head>
     <body>
+        {% block content %}
         {% load static %}
-
-        <a href="{% url 'candy:index' %}">Volver</a>
-        <h1>Acerca de mi</h1>
-        <h3>Mirabel, Naren Nahuel</h3>
-        <h3>Estudiante de Ingeniería Industrial en UNLaM</h3>
-        <a href="https://www.linkedin.com/in/naren-mirabel/">
-            <button>
-                <img src="{% static 'candy/linkedin.svg' %}" alt="linkedin" height="50px" width="100px">
-            </button>
-        </a>
-
-
-
-
+            <h1>Acerca de mi</h1>
+            <h3>Mirabel, Naren Nahuel</h3>
+            <h5>Estudiante de Ingeniería Industrial en UNLaM</h5>
+            <a href="https://www.linkedin.com/in/naren-mirabel/">
+                <button>
+                    <img src="{% static 'candy/linkedin.svg' %}" alt="linkedin" height="50px" width="100px">
+                </button>
+            </a>
+        {% endblock content %}
 
     </body>
 </html>

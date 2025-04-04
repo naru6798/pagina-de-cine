@@ -1,8 +1,17 @@
-<a href="{% url 'candy:empleados' %}">Volver</a>
-<h1>Candy - Eliminar Candy</h1>
-<p>¿Está seguro que desea eliminar el Candy: {{c.nombre}}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Si, confirmo</button>
-</form>
+{% extends 'candy/base.html' %}
 
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4">Eliminar Candy</h1>
+            <p class="text-center">¿Está seguro que desea eliminar el Candy: {{ query.nombre }}?</p>
+            <form method="post" class="text-center">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Si, confirmo</button>
+                <a href="{% url 'candy:empleados' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

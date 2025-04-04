@@ -1,3 +1,5 @@
+{% extends 'candy/base.html' %}
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,31 +8,55 @@
         <title>Inicio - Sector de empleados</title>
     </head>
     <body>
-        <ol>
-            <li><h1>Cinema - Sector de empleados</h1></li>
-            <li><a href="{% url 'candy:categorias' %}">Categorias</a></li>
-            <li><a href="{% url 'candy:peliculas' %}">Control de Peliculas</a></li>
-            <li><a href="{% url 'candy:index' %}">Volver</a></li>
-        </ol>
-        <form method="post">
+        {% block content %}
+
+        <form method="post" class="mt-3">
             {% csrf_token %}
             <h2>Candy</h2>
-            {{ form.as_p }}
-            <button type="submit">Enviar</button>
+            <div class="mb-3">
+                <label for="{{ form.categoria.id_for_label }}" class="form-label">Categoria:</label>
+                <select class="form-select" id="{{ form.categoria.id_for_label }}" name="{{ form.categoria.name }}" required>
+                    {% for categoria in form.categoria.field.queryset.all %}
+                        <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="{{ form.nombre.id_for_label }}" name="{{ form.nombre.name }}" required {% if form.errors.nombre %}aria-describedby="nombreHelp" {% endif %}>
+                {% if form.errors.nombre %}
+                    <div id="nombreHelp" class="form-text text-danger">{{ form.errors.nombre }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.precio.id_for_label }}" class="form-label">Precio:</label>
+                <input type="number" class="form-control" id="{{ form.precio.id_for_label }}" name="{{ form.precio.name }}" required {% if form.errors.precio %}aria-describedby="precioHelp" {% endif %}>
+                 {% if form.errors.precio %}
+                    <div id="precioHelp" class="form-text text-danger">{{ form.errors.precio }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
         <br>
-        <table>
-            <tr>
-                <th>Candy</th>
-                <th>Precio</th>
-            </tr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Candy</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for c in candy %}
                 <tr>
                     <td>{{c.nombre}}</td>
                     <td>{{c.precio}}$</td>
-                    <td><a href="{% url 'candy:candy_update' c.id %}"><button>Editar</button></a></td>
-                    <td><a href="{% url 'candy:candy_delete' c.id %}"><button>Eliminar</button></a></td>
+                    <td>{{c.categoria}}</td>
+                    <td><a href="{% url 'candy:candy_update' c.id %}" class="btn btn-sm btn-warning">Editar</a></td>
+                    <td><a href="{% url 'candy:candy_delete' c.id %}" class="btn btn-sm btn-danger">Eliminar</a></td>
+                </tr>
             {% endfor %}
+            </tbody>
         </table>
 
-        <br>
+        {% endblock content %}

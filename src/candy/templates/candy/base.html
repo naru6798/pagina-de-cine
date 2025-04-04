@@ -18,10 +18,12 @@
         {% include 'componentes/nav.html' %}
 
         <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-            {% block content %}
-            {% endblock content %}
-        </div>
+        <main class="flex-shrink-0 py-5">
+            <div class="container-fluid px-4 px-lg-5 mb-5 mt-auto">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </main>
 
         {% include 'componentes/footer.html' %}
 

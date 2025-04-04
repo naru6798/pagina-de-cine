@@ -1,4 +1,17 @@
+{% extends 'candy/base.html' %}
+
 {% block content %}
-    <p>Has cerrado sesion correctamente</p>
-    <a href="{% url 'candy:index' %}"><button>Volver</button></a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Cerraste sesión correctamente</h2>
+                        <p class="card-text">Gracias por tu visita.</p>
+                        <a href="{% url 'candy:index' %}" class="btn btn-primary">Volver al inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
