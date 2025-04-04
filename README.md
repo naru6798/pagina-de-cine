@@ -36,3 +36,4 @@ Candy: Aquí se almacenan cada producto dandole como identidad la categoría (de
 4. Agregar imágenes de portada para cada película
 5. Hacer un enlace para la cartelera para que no este en el index
 6. Tener un inicio de sesión aparte para los clientes y que se les sea imposible registrarse e iniciar sesion en el sector de empleados
+7. Agregar la cantidad de stock disponible en el candy
